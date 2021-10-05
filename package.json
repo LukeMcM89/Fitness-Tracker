@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LukeMcM89/Fitness-Tracker/issues"
   },
-  "homepage": "https://github.com/LukeMcM89/Fitness-Tracker#readme"
+  "homepage": "https://github.com/LukeMcM89/Fitness-Tracker#readme",
+  "dependencies": {
+    "mongoose": "^6.0.9"
+  }
 }
