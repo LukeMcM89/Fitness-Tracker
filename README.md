@@ -14,6 +14,6 @@ A personal fitness tracker application that allows the user to record their work
 
 # Links
 
-Link to deployed application on Heroku
+Link to [deployed application on Heroku](https://guarded-escarpment-11233.herokuapp.com/).
 
 Link to my [GitHub repository](https://github.com/LukeMcM89/Fitness-Tracker).
