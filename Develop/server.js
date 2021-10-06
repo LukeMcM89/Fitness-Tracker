@@ -13,6 +13,18 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static("public"));
 
+//Mongoose + Heroku connect
+
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/Fitness-TrackerDB',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }
+);
+
 //HTML routes
 
 app.get("/", (req,res) =>{
