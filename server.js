@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 const mongoose = require('mongoose');
+const Workout = require('./models/workout');
 
 const app = express();
 
@@ -43,30 +44,48 @@ app.get("/exercise", (req,res) =>{
 
 app.get("/api/workouts", (req,res) =>{
     //send an array of objects as JSON
-
+    Workout.aggregate ([
+        {
+            $addFields:{
+                totalDuration:{
+                    $sum: '$exercises.duration'
+                }
+            }
+        }
+    ]).finally(res.json);
 });
 
 app.put("/api/workouts/:id", (req,res) =>{
     const workoutid = req.params.id;
     const exercise = req.body;
     // send information??? as JSON  ||  Anything sent is completely ignored!
+    Workout.findByIdAndUpdate(params.id,
+        {$push: {exercises:body}},
+        {new:true, runValidators: true}
+        ).finally(res.json);
 });
 
 app.post("/api/workouts", (req, res) =>{
     const workout = req.body; // As written front-end will always send an EMPTY object in Req.Body!!
     // send information??? as JSON
+    Workout.create(workout)
+    .finally(res.json);
 });
 
 app.get("/api/workouts/range", (req, res) =>{
     // send JSON potentially array
+    Workout.aggregate([
+        {
+            $addFields:{
+                totalDuration: {
+                    $sum: '$exercises.duration'
+                }
+            }
+        }
+    ]).sort({_id:-1})
+    .limit(7)
+    .finally(res.json);
 });
-
-
-
-
-
-
-
 
 app.listen(port, ()=>{
     console.log(`Server is listening on ${port}!`);
