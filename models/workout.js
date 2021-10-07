@@ -18,7 +18,6 @@ const fitnessSchema = new Schema({
       },
       duration: {
         type: Number,
-        required: "Select a amount of time.",
       },
       weight: {
         type: Number,
