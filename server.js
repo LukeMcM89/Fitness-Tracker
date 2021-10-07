@@ -1,18 +1,20 @@
 const express = require('express');
-const dotenv = require('dotenv');
+//const dotenv = require('dotenv');
 const path = require('path');
 const mongoose = require('mongoose');
 const Workout = require('./models/workout');
 
 const app = express();
 
-dotenv.config();
+//dotenv.config();
 
 const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static("public"));
+
+
 
 //Mongoose + Heroku connect
 
@@ -96,4 +98,4 @@ app.listen(port, ()=>{
 });
 
 
-
+//
