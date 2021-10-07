@@ -59,8 +59,8 @@ app.put("/api/workouts/:id", (req,res) =>{
     const workoutid = req.params.id;
     const exercise = req.body;
     // send information??? as JSON  ||  Anything sent is completely ignored!
-    Workout.findByIdAndUpdate(params.id,
-        {$push: {exercises:body}},
+    Workout.findByIdAndUpdate(workoutid,
+        {$push: {exercises:exercise}},
         {new:true, runValidators: true}
         ).finally(res.json);
 });
