@@ -52,7 +52,8 @@ app.get("/api/workouts", (req,res) =>{
                 }
             }
         }
-    ]).then(res.json);
+    ]).then(res.json)
+    .catch(res.json); 
 });
 
 app.put("/api/workouts/:id", (req,res) =>{
@@ -62,14 +63,16 @@ app.put("/api/workouts/:id", (req,res) =>{
     Workout.findByIdAndUpdate(workoutid,
         {$push: {exercises:exercise}},
         {new:true, runValidators: true}
-        ).then(res.json);
+        ).then(res.json)
+        .catch(res.json);
 });
 
 app.post("/api/workouts", (req, res) =>{
     const workout = req.body; // As written front-end will always send an EMPTY object in Req.Body!!
     // send information??? as JSON
     Workout.create(workout)
-    .then(res.json);
+    .then(res.json)
+    .catch(res.json);
 });
 
 app.get("/api/workouts/range", (req, res) =>{
@@ -84,7 +87,8 @@ app.get("/api/workouts/range", (req, res) =>{
         }
     ]).sort({_id:-1})
     .limit(7)
-    .then(res.json);
+    .then(res.json)
+    .catch(res.json);
 });
 
 app.listen(port, ()=>{
